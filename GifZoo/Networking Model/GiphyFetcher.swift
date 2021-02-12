@@ -1,5 +1,5 @@
 //
-//  Networking.swift
+//  GiphyFetcher.swift
 //  GifZoo
 //
 //  Created by Andrew Struck-Marcell on 12/14/20.
@@ -91,26 +91,30 @@ class GiphyFetcher: NSObject {
     }
     
     func fetchImage(atURL url: URL, completion: @escaping (Result<UIImage, Error>) -> ()) {
-        do {
-            let imageData = try Data(contentsOf: url)
-            if let image = UIImage.gifImageWithData(imageData) {
-                completion(.success(image))
-            } else {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let imageData = try Data(contentsOf: url)
+                if let image = UIImage.gifImageWithData(imageData) {
+                    completion(.success(image))
+                } else {
+                    completion(.failure(NetworkingErrors.noData))
+                }
+            } catch {
                 completion(.failure(NetworkingErrors.noData))
             }
-        } catch {
-            completion(.failure(NetworkingErrors.noData))
         }
     }
     
     func fetchMp4(atURL url: URL, completion: @escaping (Result<AVPlayerItem, Error>) -> ()) {
-        let mp4Item = AVPlayerItem(url: url)
-        if let itemError = mp4Item.error {
-            print("Error fetching mp4 from url: \(itemError)")
-            completion(.failure(itemError))
-            return
+        DispatchQueue.global(qos: .userInteractive).async {
+            let mp4Item = AVPlayerItem(url: url)
+            if let itemError = mp4Item.error {
+                print("Error fetching mp4 from url: \(itemError)")
+                completion(.failure(itemError))
+                return
+            }
+            completion(.success(mp4Item))
         }
-        completion(.success(mp4Item))
     }
     
 }

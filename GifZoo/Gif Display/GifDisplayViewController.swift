@@ -173,7 +173,7 @@ extension GifDisplayViewController: UICollectionViewDelegate {
         view.addSubview(mp4Containerview)
         view.bringSubviewToFront(grayView)
         view.bringSubviewToFront(mp4Containerview)
-
+        
         viewModel.getMP4(atURL: (URL(string: (gif.metadata?.mp4?.mp4)!))!, forID: gif.id) { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

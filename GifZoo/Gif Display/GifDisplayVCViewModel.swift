@@ -17,6 +17,8 @@ class GifDisplayVCViewModel: NSObject {
     var gifsRetrievedImages: [UUID: [GifMetadata: UIImage]] = [:]
     let fetcher = GiphyFetcher.sharedInstance
     let dispatchGroup = DispatchGroup()
+    var mp4Item: AVPlayerItem? = nil
+    var mp4: AVPlayer? = nil
     
     func getGifs(withText text: String, endpoint: GiphyEndpoint, limit: String = "1", completion: @escaping () -> ()) {
         let queries = [endpoint.queryParameterKeys[0]: text, endpoint.queryParameterKeys[1]: limit]
@@ -97,10 +99,7 @@ class GifDisplayVCViewModel: NSObject {
             }
         }
     }
-    
-    var mp4Item: AVPlayerItem? = nil
-    var mp4: AVPlayer? = nil
-    
+        
     func getMP4(atURL url: URL, forID id: UUID, completion: @escaping () -> ()) {
         fetcher.fetchMp4(atURL: url) { [weak self] (result) in
             guard let self = self else {

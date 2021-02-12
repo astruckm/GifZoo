@@ -15,10 +15,11 @@
 		724392942587505E00AA0D4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 724392932587505E00AA0D4C /* Assets.xcassets */; };
 		724392972587505E00AA0D4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 724392952587505E00AA0D4C /* LaunchScreen.storyboard */; };
 		724392A4258751FA00AA0D4C /* GifCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724392A3258751FA00AA0D4C /* GifCollectionViewCell.swift */; };
-		724392A7258752D400AA0D4C /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724392A6258752D400AA0D4C /* Fetcher.swift */; };
+		724392A7258752D400AA0D4C /* GiphyFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724392A6258752D400AA0D4C /* GiphyFetcher.swift */; };
 		724392AA258753E100AA0D4C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724392A9258753E100AA0D4C /* Constants.swift */; };
 		724392AE2587659E00AA0D4C /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724392AD2587659E00AA0D4C /* Response.swift */; };
 		724392B52587784D00AA0D4C /* GifDisplayVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724392B42587784D00AA0D4C /* GifDisplayVCViewModel.swift */; };
+		72906C0D25D661BE00FF0783 /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72906C0C25D661BE00FF0783 /* ApiResource.swift */; };
 		729B05DD2588DD7500AF03B0 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B05DC2588DD7500AF03B0 /* Gif.swift */; };
 		72A341D5259413B40074DCDB /* GiphyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A341D4259413B40074DCDB /* GiphyEndpoint.swift */; };
 /* End PBXBuildFile section */
@@ -34,10 +35,11 @@
 		724392962587505E00AA0D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		724392982587505E00AA0D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		724392A3258751FA00AA0D4C /* GifCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCollectionViewCell.swift; sourceTree = "<group>"; };
-		724392A6258752D400AA0D4C /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		724392A6258752D400AA0D4C /* GiphyFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyFetcher.swift; sourceTree = "<group>"; };
 		724392A9258753E100AA0D4C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		724392AD2587659E00AA0D4C /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		724392B42587784D00AA0D4C /* GifDisplayVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifDisplayVCViewModel.swift; sourceTree = "<group>"; };
+		72906C0C25D661BE00FF0783 /* ApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
 		729B05DC2588DD7500AF03B0 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		72A341D4259413B40074DCDB /* GiphyEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +110,8 @@
 			children = (
 				72A341D4259413B40074DCDB /* GiphyEndpoint.swift */,
 				724392AD2587659E00AA0D4C /* Response.swift */,
-				724392A6258752D400AA0D4C /* Fetcher.swift */,
+				724392A6258752D400AA0D4C /* GiphyFetcher.swift */,
+				72906C0C25D661BE00FF0783 /* ApiResource.swift */,
 			);
 			path = "Networking Model";
 			sourceTree = "<group>";
@@ -195,9 +198,10 @@
 			files = (
 				7243928F2587505C00AA0D4C /* GifDisplayViewController.swift in Sources */,
 				724392A4258751FA00AA0D4C /* GifCollectionViewCell.swift in Sources */,
+				72906C0D25D661BE00FF0783 /* ApiResource.swift in Sources */,
 				7243928B2587505C00AA0D4C /* AppDelegate.swift in Sources */,
 				72222AFB258C9029003A310E /* GIF-Swift.swift in Sources */,
-				724392A7258752D400AA0D4C /* Fetcher.swift in Sources */,
+				724392A7258752D400AA0D4C /* GiphyFetcher.swift in Sources */,
 				724392AA258753E100AA0D4C /* Constants.swift in Sources */,
 				7243928D2587505C00AA0D4C /* SceneDelegate.swift in Sources */,
 				724392AE2587659E00AA0D4C /* Response.swift in Sources */,
