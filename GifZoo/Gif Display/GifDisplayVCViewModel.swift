@@ -19,6 +19,8 @@ class GifDisplayVCViewModel: NSObject {
     let dispatchGroup = DispatchGroup()
     var mp4Item: AVPlayerItem? = nil
     var mp4: AVPlayer? = nil
+    var smallGifRequests: [AnyObject] = [] ///Just temporarily cache requests so ARC doesn't release GifRequests
+    var largeGifRequest: AnyObject?
     
     func getGifs(withText text: String, endpoint: GiphyEndpoint, limit: String = "1", completion: @escaping () -> ()) {
         let queries = [endpoint.queryParameterKeys[0]: text, endpoint.queryParameterKeys[1]: limit]
@@ -47,6 +49,7 @@ class GifDisplayVCViewModel: NSObject {
             self.dispatchGroup.notify(queue: DispatchQueue.global(qos: .utility)) {
                 // Some kine of notification can go here if needed
                 print("Finished downloading all gifs")
+                self.smallGifRequests = []
             }
         }
     }
@@ -78,7 +81,9 @@ class GifDisplayVCViewModel: NSObject {
     }
     
     func getImage(atURL url: URL, forID id: UUID, metadata: GifMetadata, completion: @escaping () -> ()) {
-        fetcher.fetchImage(atURL: url) { [weak self] (result) in
+        let gifRequest = GifRequest(url: url)
+        smallGifRequests.append(gifRequest)
+        gifRequest.load { [weak self] (result) in
             guard let self = self else {
                 print("Unable to capture self while fetching image")
                 return
@@ -98,10 +103,33 @@ class GifDisplayVCViewModel: NSObject {
                 completion()
             }
         }
+        
+//        fetcher.fetchImage(atURL: url) { [weak self] (result) in
+//            guard let self = self else {
+//                print("Unable to capture self while fetching image")
+//                return
+//            }
+//            switch result {
+//            case .failure(let error):
+//                print("Error fetching imagefile: ", error.localizedDescription)
+//            case .success(let image):
+//                if var imagesByMetadata = self.gifsRetrievedImages[id] {
+//                    imagesByMetadata[metadata] = image
+//                    self.gifsRetrievedImages[id] = imagesByMetadata
+//                } else {
+//                    self.gifsRetrievedImages[id] = [metadata: image]
+//                }
+//
+//                print("assigned image of duration: \(image.duration) to data model object")
+//                completion()
+//            }
+//        }
     }
         
     func getMP4(atURL url: URL, forID id: UUID, completion: @escaping () -> ()) {
-        fetcher.fetchMp4(atURL: url) { [weak self] (result) in
+        let mp4Request = MP4Request(url: url)
+        largeGifRequest = mp4Request
+        mp4Request.load { [weak self] (result) in
             guard let self = self else {
                 print("Unable to capture self while fetching image")
                 return
@@ -114,8 +142,24 @@ class GifDisplayVCViewModel: NSObject {
                 self.mp4 = AVPlayer(playerItem: self.mp4Item)
                 completion()
                 print("Assigned mp4Item to AVPlayerItem")
+                self.largeGifRequest = nil
             }
         }
+//        fetcher.fetchMp4(atURL: url) { [weak self] (result) in
+//            guard let self = self else {
+//                print("Unable to capture self while fetching image")
+//                return
+//            }
+//            switch result {
+//            case .failure(let error):
+//                print("Error fetching mp4: ", error.localizedDescription)
+//            case .success(let playerItem):
+//                self.mp4Item = playerItem
+//                self.mp4 = AVPlayer(playerItem: self.mp4Item)
+//                completion()
+//                print("Assigned mp4Item to AVPlayerItem")
+//            }
+//        }
         
     }
     

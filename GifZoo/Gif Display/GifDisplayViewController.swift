@@ -175,7 +175,7 @@ extension GifDisplayViewController: UICollectionViewDelegate {
         
         viewModel.getMP4(atURL: (URL(string: (gif.metadata?.mp4?.mp4)!))!, forID: gif.id) { [weak self] in
             guard let self = self else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { /// FIXME: this delay is not 100% perfect to load mp4ContainerView
                 UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: [.calculationModeLinear, .layoutSubviews]) {
                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1) {
                         self.mp4Containerview.frame = CGRect(x: self.view.bounds.midX - width/4, y: self.view.bounds.midY - height/4, width: width/2, height: height/2)

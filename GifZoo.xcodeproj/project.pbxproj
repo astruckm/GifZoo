@@ -112,8 +112,8 @@
 		725B541525A6F94C0034023B /* Networking Model */ = {
 			isa = PBXGroup;
 			children = (
-				7287DD8425D7D2F500C81C5C /* Giphy API */,
 				724392A6258752D400AA0D4C /* GiphyFetcher.swift */,
+				7287DD8825D801FD00C81C5C /* Giphy API */,
 				72906C0C25D661BE00FF0783 /* ApiResources.swift */,
 				7287DD8225D7C84300C81C5C /* Requests */,
 			);
@@ -129,7 +129,7 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
-		7287DD8425D7D2F500C81C5C /* Giphy API */ = {
+		7287DD8825D801FD00C81C5C /* Giphy API */ = {
 			isa = PBXGroup;
 			children = (
 				72A341D4259413B40074DCDB /* GiphyEndpoint.swift */,
