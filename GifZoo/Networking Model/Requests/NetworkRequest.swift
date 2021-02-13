@@ -10,7 +10,7 @@ import Foundation
 
 protocol NetworkRequest: AnyObject {
     associatedtype ModelType
-    func load(_ url: URL, withCompletion completion: @escaping (Result<ModelType, Error>) -> ())
+    func load(withCompletion completion: @escaping (Result<ModelType, Error>) -> ())
     func decode(_ data: Data) -> ModelType?
 }
 
