@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  GiphyResponse.swift
 //  GifZoo
 //
 //  Created by Andrew Struck-Marcell on 12/14/20.
@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct Response {
+struct GiphyResponse: Decodable {
     struct GifsResponse: Decodable {
         let data: [ResponseData]?
     }

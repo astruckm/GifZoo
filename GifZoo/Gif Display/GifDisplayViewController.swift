@@ -140,7 +140,6 @@ extension GifDisplayViewController {
 
 extension GifDisplayViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //view.endEditing(true) FIXME: make this line of code work
         guard !isPresentingMP4 else {
             gifCollectionView.deselectItem(at: indexPath, animated: false)
             hideMP4Popup()

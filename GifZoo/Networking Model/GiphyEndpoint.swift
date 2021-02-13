@@ -18,11 +18,9 @@ enum GiphyEndpoint: String {
         switch self {
         case .search: return ["q", "limit", "offset", "rating", "lang"]
         case .translate: return ["s"]
-        case .trending: return ["", "limit", "", "rating", ""]
-        case .random: return ["tag", "", "", "rating", ""]
+        case .trending: return ["limit", "rating"]
+        case .random: return ["tag", "rating"]
         }
     }
-    
-    
     
 }
