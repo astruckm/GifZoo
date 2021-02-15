@@ -8,13 +8,6 @@
 import UIKit
 import AVFoundation
 
-enum NetworkingErrors: String, Error {
-    case noData = "Data from request is nil"
-    case noImageData = "Image data could not be retrieved from URL"
-    case dataDecodingFailure = "Could not decode JSON data to data model type"
-    case noImageURL = "No url for that image"
-    case makeGifFailure = "Could not create gif from the image data"
-}
 
 class GiphyFetcher: NSObject {
     static let sharedInstance = GiphyFetcher()
@@ -36,7 +29,7 @@ class GiphyFetcher: NSObject {
         return components.url
     }
     
-    func fetchGifsData(endpoint: String, queries: [String: String], completion: @escaping (Result<GiphyResponse.GifsResponse, Error>) -> ()) {
+    func fetchGifsData(endpoint: String, queries: [String: String], completion: @escaping (Result<GifsResponse, Error>) -> ()) {
         guard let url = constructURL(forEndpoint: endpoint, withQueries: queries) else {
             print("Could not construct URL for getGifsData")
             return
@@ -54,7 +47,7 @@ class GiphyFetcher: NSObject {
             
             let decoder = JSONDecoder()
             do {
-                let jsonData = try decoder.decode(GiphyResponse.GifsResponse.self, from: data)
+                let jsonData = try decoder.decode(GifsResponse.self, from: data)
                 completion(.success(jsonData))
             } catch let jsonError {
                 completion(.failure(jsonError))
@@ -63,7 +56,7 @@ class GiphyFetcher: NSObject {
         task.resume()
     }
     
-    func fetchRandomGif(tag: String, completion: @escaping (Result<GiphyResponse.RandomGifResponse, Error>) -> ()) {
+    func fetchRandomGif(tag: String, completion: @escaping (Result<RandomGifResponse, Error>) -> ()) {
         guard let url = constructURL(forEndpoint: "random", withQueries: ["tag": tag, "rating": "g"]) else {
             print("Could not construct URL for getRandomGif")
             return
@@ -81,7 +74,7 @@ class GiphyFetcher: NSObject {
             
             let decoder = JSONDecoder()
             do {
-                let jsonData = try decoder.decode(GiphyResponse.RandomGifResponse.self, from: data)
+                let jsonData = try decoder.decode(RandomGifResponse.self, from: data)
                 completion(.success(jsonData))
             } catch let jsonError {
                 completion(.failure(jsonError))

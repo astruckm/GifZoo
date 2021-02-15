@@ -106,7 +106,7 @@ extension GifDisplayViewController: UISearchBarDelegate {
         gifCollectionView.layer.sublayers?.first(where: { $0 is AVPlayerLayer })?.removeFromSuperlayer()
         viewModel.gifs = []
         viewModel.gifsRetrievedImages = [:]
-        let numGifs = numGifsControl.titleForSegment(at: numGifsControl.selectedSegmentIndex) ?? "1"
+        let numGifs: Int = Int(numGifsControl.titleForSegment(at: numGifsControl.selectedSegmentIndex) ?? "1") ?? 1
         viewModel.getGifs(withText: text, endpoint: .search, limit: numGifs) { [weak self] in
             DispatchQueue.main.async {
                 self?.configureDataSource()
@@ -223,7 +223,7 @@ extension GifDisplayViewController: UICollectionViewDelegate {
 
 extension GifDisplayViewController {
     private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2),
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         

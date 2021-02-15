@@ -7,17 +7,16 @@
 
 import Foundation
 
+protocol GiphyResponse { }
 
-
-struct GiphyResponse: Decodable {
-    struct GifsResponse: Decodable {
-        let data: [ResponseData]?
-    }
-
-    struct RandomGifResponse: Decodable {
-        let data: ResponseData?
-    }
+struct GifsResponse: Decodable, GiphyResponse {
+    let data: [ResponseData]?
 }
+
+struct RandomGifResponse: Decodable, GiphyResponse {
+    let data: ResponseData?
+}
+
 
 struct ResponseData: Decodable {
     let id: String?
