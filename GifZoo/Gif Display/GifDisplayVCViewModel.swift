@@ -22,7 +22,7 @@ class GifDisplayVCViewModel: NSObject {
     var cachedRequest: AnyObject?
     
     func getGifs(withText text: String, endpoint: GiphyEndpoint, limit: Int = 1, completion: @escaping () -> ()) {
-        let request = GiphyRequest(endpoint: .search, searchTerm: text, limit: limit)
+        let request = GiphyRequest(endpoint: endpoint, searchTerm: text, limit: limit)
         cachedRequest = request
         request.load { [weak self] (result) in
             guard let self = self else {

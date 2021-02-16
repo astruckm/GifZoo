@@ -40,11 +40,14 @@
                                 <rect key="frame" x="-13" y="176" width="440" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsm-DX-wfO" userLabel="Trending!">
-                                        <rect key="frame" x="72" y="0.0" width="68" height="40"/>
+                                        <rect key="frame" x="72" y="0.0" width="113" height="40"/>
                                         <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                        <state key="normal" title="Trending!">
+                                        <state key="normal" title="😲 Trending 😮">
                                             <color key="titleColor" red="0.019607843140000001" green="0.5568627451" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="trendingButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jao-Pu-Ye9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX3-ae-Nbp">
                                         <rect key="frame" x="276" y="0.0" width="92" height="40"/>
@@ -148,6 +151,7 @@
                         <outlet property="grayView" destination="aqD-II-fSS" id="z3a-bl-LbQ"/>
                         <outlet property="numGifsControl" destination="8jW-4t-RLh" id="8d7-MY-2bL"/>
                         <outlet property="randomGifButton" destination="NX3-ae-Nbp" id="59X-8V-j6G"/>
+                        <outlet property="trendingButton" destination="rsm-DX-wfO" id="6p5-tI-RLH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

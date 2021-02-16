@@ -11,6 +11,7 @@ import AVFoundation
 class GifDisplayViewController: UIViewController {
     @IBOutlet weak var grayView: UIView!
     @IBOutlet weak var gifSearchBar: UISearchBar!
+    @IBOutlet weak var trendingButton: UIButton!
     @IBOutlet weak var randomGifButton: UIButton!
     @IBOutlet weak var gifCollectionView: UICollectionView!
     @IBOutlet weak var numGifsControl: UISegmentedControl!
@@ -20,7 +21,24 @@ class GifDisplayViewController: UIViewController {
     var viewModel: GifDisplayVCViewModel!
     var dataSource: UICollectionViewDiffableDataSource<GifDisplayVCViewModel.Section, Gif>!
     var isPresentingMP4 = false
-        
+    
+    @IBAction func trendingButtonTapped(_ sender: UIButton) {
+        // TODO: make these lines of code more DRY
+        viewModel.mp4Item = nil
+        viewModel.mp4 = nil
+        gifCollectionView.layer.sublayers?.first(where: { $0 is AVPlayerLayer })?.removeFromSuperlayer()
+        viewModel.gifs = []
+        viewModel.gifsRetrievedImages = [:]
+        let numGifs: Int = Int(numGifsControl.titleForSegment(at: numGifsControl.selectedSegmentIndex) ?? "1") ?? 1
+        viewModel.getGifs(withText: "", endpoint: .trending, limit: numGifs) { [weak self] in
+            DispatchQueue.main.async {
+                self?.configureDataSource()
+                self?.updateGifsData()
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     @IBAction func randomGifTapped(_ sender: UIButton) {
         guard let text = gifSearchBar.text else { return }
         viewModel.mp4Item = nil
