@@ -13,17 +13,7 @@ enum GiphyEndpoint: String {
     case translate
     case trending
     case random
-            
-    // FIXME: this var is now deprecated
-    var queryParameterKeys: [String] {
-        switch self {
-        case .search: return ["q", "limit", "offset", "rating", "lang"]
-        case .translate: return ["s"]
-        case .trending: return ["limit", "rating"]
-        case .random: return ["tag", "rating"]
-        }
-    }
-    
+                
     var queryParameterKeyStringsByType: [QueryKeyType: String] {
         switch self {
         case .search: return [.searchQuery: "q", .limit: "limit", .offset: "offset", .rating: "rating", .language: "lang"]
@@ -43,6 +33,5 @@ enum GiphyEndpoint: String {
 
 enum QueryKeyType: String, Hashable, CaseIterable {
     case searchQuery, limit, offset, rating, language
-    
 }
 

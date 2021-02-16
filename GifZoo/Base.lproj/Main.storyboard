@@ -35,10 +35,39 @@
                                     <segment title="50"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="numGifsSelected:forEvent:" destination="BYZ-38-t0r" eventType="valueChanged" id="huA-lH-Yjo"/>
-                                </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-rj-sLJ" userLabel="Other Endpoints Container View">
+                                <rect key="frame" x="-13" y="176" width="440" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsm-DX-wfO" userLabel="Trending!">
+                                        <rect key="frame" x="72" y="0.0" width="68" height="40"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                        <state key="normal" title="Trending!">
+                                            <color key="titleColor" red="0.019607843140000001" green="0.5568627451" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX3-ae-Nbp">
+                                        <rect key="frame" x="276" y="0.0" width="92" height="40"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                        <state key="normal" title="Random Gif!">
+                                            <color key="titleColor" red="0.019607843137254902" green="0.55686274509803924" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="randomGifTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qGT-kS-JgC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rsm-DX-wfO" firstAttribute="centerY" secondItem="Idc-rj-sLJ" secondAttribute="centerY" id="7Ly-eo-6Z0"/>
+                                    <constraint firstAttribute="trailing" secondItem="NX3-ae-Nbp" secondAttribute="trailing" constant="72" id="9bi-Eq-ZH6"/>
+                                    <constraint firstItem="NX3-ae-Nbp" firstAttribute="centerY" secondItem="Idc-rj-sLJ" secondAttribute="centerY" id="CFt-YC-wFV"/>
+                                    <constraint firstItem="NX3-ae-Nbp" firstAttribute="height" secondItem="Idc-rj-sLJ" secondAttribute="height" id="NY9-mK-aFR"/>
+                                    <constraint firstItem="rsm-DX-wfO" firstAttribute="leading" secondItem="Idc-rj-sLJ" secondAttribute="leading" constant="72" id="PrB-Fk-G3o"/>
+                                    <constraint firstItem="NX3-ae-Nbp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rsm-DX-wfO" secondAttribute="trailing" constant="8" symbolic="YES" id="pvG-FC-ajw"/>
+                                    <constraint firstItem="rsm-DX-wfO" firstAttribute="height" secondItem="Idc-rj-sLJ" secondAttribute="height" id="yRj-KG-bDj"/>
+                                </constraints>
+                            </view>
                             <searchBar contentMode="redraw" placeholder="Search text" translatesAutoresizingMaskIntoConstraints="NO" id="OqH-ab-EEc">
                                 <rect key="frame" x="0.0" y="112" width="414" height="56"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,16 +76,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="WP3-er-BWp"/>
                                 </connections>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX3-ae-Nbp">
-                                <rect key="frame" x="161" y="176" width="92" height="40"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                <state key="normal" title="Random Gif!">
-                                    <color key="titleColor" red="0.019607843137254902" green="0.55686274509803924" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="randomGifTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qGT-kS-JgC"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="18p-3w-ZL8">
                                 <rect key="frame" x="0.0" y="240" width="414" height="622"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,22 +123,23 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.90588235294117647" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aqD-II-fSS" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="14F-jL-zeQ"/>
+                            <constraint firstItem="Idc-rj-sLJ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1.0628" id="7iC-fk-xy8"/>
                             <constraint firstItem="aqD-II-fSS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="8f8-iI-vpK"/>
                             <constraint firstItem="aqD-II-fSS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ACF-Uu-yU4"/>
                             <constraint firstItem="18p-3w-ZL8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="DfM-mt-V2N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OqH-ab-EEc" secondAttribute="trailing" id="JXj-B7-waO"/>
+                            <constraint firstItem="Idc-rj-sLJ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="K0j-Y9-Yc6"/>
+                            <constraint firstItem="18p-3w-ZL8" firstAttribute="top" secondItem="Idc-rj-sLJ" secondAttribute="bottom" constant="24" id="L7M-EW-Kki"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VDM-qc-cBJ" secondAttribute="trailing" constant="8" id="NcT-Ad-WSB"/>
                             <constraint firstItem="8jW-4t-RLh" firstAttribute="bottom" secondItem="OqH-ab-EEc" secondAttribute="top" constant="-16" id="SfJ-83-3ru"/>
                             <constraint firstItem="18p-3w-ZL8" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UQA-JR-rTi"/>
                             <constraint firstItem="18p-3w-ZL8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="W3z-Pr-cDb"/>
+                            <constraint firstItem="Idc-rj-sLJ" firstAttribute="top" secondItem="OqH-ab-EEc" secondAttribute="bottom" constant="8" id="XCj-En-ccL"/>
                             <constraint firstItem="VDM-qc-cBJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="XtS-gn-Uhd"/>
-                            <constraint firstItem="NX3-ae-Nbp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ed9-7e-N8o"/>
-                            <constraint firstItem="18p-3w-ZL8" firstAttribute="top" secondItem="NX3-ae-Nbp" secondAttribute="bottom" constant="24" id="lkb-kc-rCg"/>
                             <constraint firstItem="8jW-4t-RLh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="og1-xs-mtm"/>
                             <constraint firstItem="aqD-II-fSS" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="50" id="qOC-MF-SmQ"/>
                             <constraint firstItem="8jW-4t-RLh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="tSm-MW-aIm"/>
                             <constraint firstItem="OqH-ab-EEc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tUk-BC-aUw"/>
-                            <constraint firstItem="NX3-ae-Nbp" firstAttribute="top" secondItem="OqH-ab-EEc" secondAttribute="bottom" constant="8" id="wVy-rb-0J3"/>
                         </constraints>
                     </view>
                     <connections>

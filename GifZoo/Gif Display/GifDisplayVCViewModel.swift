@@ -13,9 +13,9 @@ class GifDisplayVCViewModel: NSObject {
         case main
     }
     
+    let dispatchGroup = DispatchGroup()
     var gifs: [Gif] = []
     var gifsRetrievedImages: [UUID: [GifMetadata: UIImage]] = [:]
-    let dispatchGroup = DispatchGroup()
     var mp4Item: AVPlayerItem? = nil
     var mp4: AVPlayer? = nil
     var cachedRequests: [AnyObject] = [] ///Just temporarily cache requests so ARC doesn't release GifRequests
@@ -71,6 +71,7 @@ class GifDisplayVCViewModel: NSObject {
             switch result {
             case .failure(let error):
                 print("Error fetching random Gif: \(error.localizedDescription)")
+                self.cachedRequest = nil
             case .success(let randomGifResponse):
                 guard let randomGifResponse = randomGifResponse as? RandomGifResponse else {
                     print("Could not cast GiphyResponse to RandomGifResponse")

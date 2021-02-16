@@ -20,23 +20,7 @@ class GifDisplayViewController: UIViewController {
     var viewModel: GifDisplayVCViewModel!
     var dataSource: UICollectionViewDiffableDataSource<GifDisplayVCViewModel.Section, Gif>!
     var isPresentingMP4 = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        gifCollectionView.collectionViewLayout = createLayout()
-        viewModel = GifDisplayVCViewModel()
-        gifCollectionView.delegate = self
-        setupUI()
-        configureDataSource()
-        updateGifsData()
-    }
-    
-    
-    @IBAction func numGifsSelected(_ sender: UISegmentedControl, forEvent event: UIEvent) {
-        // TODO: change font size here
-    }
-    
     @IBAction func randomGifTapped(_ sender: UIButton) {
         guard let text = gifSearchBar.text else { return }
         viewModel.mp4Item = nil
@@ -63,6 +47,17 @@ class GifDisplayViewController: UIViewController {
         view.endEditing(true)
         
         hideMP4Popup()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        gifCollectionView.collectionViewLayout = createLayout()
+        viewModel = GifDisplayVCViewModel()
+        gifCollectionView.delegate = self
+        setupUI()
+        configureDataSource()
+        updateGifsData()
     }
     
     private func setupUI() {
