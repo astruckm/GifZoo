@@ -19,7 +19,7 @@ class GifRequest: NetworkRequest {
     }
     
     func load(withCompletion completion: @escaping (Result<UIImage, Error>) -> ()) {
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             self.load(self.url, withCompletion: completion)
         }

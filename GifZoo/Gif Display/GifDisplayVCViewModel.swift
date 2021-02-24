@@ -50,7 +50,7 @@ class GifDisplayVCViewModel: NSObject {
                     }
                 })
             }
-            self.dispatchGroup.notify(queue: DispatchQueue.global(qos: .utility)) {
+            self.dispatchGroup.notify(queue: DispatchQueue.global(qos: .background)) {
                 print("Finished downloading all gifs")
                 self.cachedRequest = nil
                 self.cachedRequests = []
