@@ -111,7 +111,11 @@ class GifDisplayViewController: UIViewController {
 extension GifDisplayViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = gifSearchBar.text else { return }
-        
+        performSearch(withText: text)
+        searchBar.resignFirstResponder()
+    }
+    
+    private func performSearch(withText text: String) {
         activityIndicator.startAnimating()
         
         viewModel.mp4Item = nil
@@ -127,7 +131,7 @@ extension GifDisplayViewController: UISearchBarDelegate {
                 self?.activityIndicator.stopAnimating()
             }
         }
-        searchBar.resignFirstResponder()
+
     }
     
 }
@@ -152,6 +156,23 @@ extension GifDisplayViewController {
 }
 
 extension GifDisplayViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let gif = dataSource.itemIdentifier(for: indexPath) else {
+            gifCollectionView.deselectItem(at: indexPath, animated: true)
+            return nil
+        }
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            let saveAction = UIAction(title: NSLocalizedString("Save URL", comment: ""), image: UIImage(systemName: "square.and.arrow.down.on.square"), discoverabilityTitle: "Saves the URL for the gif so you can access it again.") { action in
+                print("Save Gif URL here")
+            }
+            let searchAction = UIAction(title: NSLocalizedString("Search Similar Gifs", comment: ""), image: UIImage(systemName: "magnifyingglass"), discoverabilityTitle: "Start a new search based on this Gif's title.") { action in
+                self.gifSearchBar.text = gif.title
+                self.performSearch(withText: gif.title)
+            }
+            return UIMenu(title: "", children: [saveAction, searchAction])
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard !isPresentingMP4 else {
             gifCollectionView.deselectItem(at: indexPath, animated: false)
@@ -180,7 +201,6 @@ extension GifDisplayViewController: UICollectionViewDelegate {
         grayView.addGestureRecognizer(tap)
         
         mp4Containerview = UIView(frame: CGRect(x: cellFrame.minX, y: cellFrame.minY, width: 0, height: 0))
-        mp4Containerview.translatesAutoresizingMaskIntoConstraints = true
         mp4Containerview.backgroundColor = .white
         view.addSubview(mp4Containerview)
         view.bringSubviewToFront(grayView)

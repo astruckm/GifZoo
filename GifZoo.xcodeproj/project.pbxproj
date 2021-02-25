@@ -23,6 +23,7 @@
 		7287DD8025D7C82F00C81C5C /* GifRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7287DD7F25D7C82F00C81C5C /* GifRequests.swift */; };
 		729B05DD2588DD7500AF03B0 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B05DC2588DD7500AF03B0 /* Gif.swift */; };
 		72A341D5259413B40074DCDB /* GiphyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A341D4259413B40074DCDB /* GiphyEndpoint.swift */; };
+		72AC425525E77D55006B5BB0 /* MP4ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AC425425E77D55006B5BB0 /* MP4ContainerView.swift */; };
 		72FF882525D91BDD005E3AD6 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF882425D91BDD005E3AD6 /* NetworkingErrors.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		7287DD7F25D7C82F00C81C5C /* GifRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifRequests.swift; sourceTree = "<group>"; };
 		729B05DC2588DD7500AF03B0 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		72A341D4259413B40074DCDB /* GiphyEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyEndpoint.swift; sourceTree = "<group>"; };
+		72AC425425E77D55006B5BB0 /* MP4ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP4ContainerView.swift; sourceTree = "<group>"; };
 		72FF882425D91BDD005E3AD6 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				7243928C2587505C00AA0D4C /* SceneDelegate.swift */,
 				724392902587505C00AA0D4C /* Main.storyboard */,
 				724392A9258753E100AA0D4C /* Constants.swift */,
+				72AC425325E77D1D006B5BB0 /* Custom Views */,
 				721EDC7425A42F9800DAD452 /* Model */,
 				725B541525A6F94C0034023B /* Networking Layer */,
 				72D9FB2125A5A03E004443D3 /* Gif Display */,
@@ -136,6 +139,14 @@
 				724392AD2587659E00AA0D4C /* GiphyResponse.swift */,
 			);
 			path = "Giphy API";
+			sourceTree = "<group>";
+		};
+		72AC425325E77D1D006B5BB0 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				72AC425425E77D55006B5BB0 /* MP4ContainerView.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		72D9FB2125A5A03E004443D3 /* Gif Display */ = {
@@ -232,6 +243,7 @@
 				724392B52587784D00AA0D4C /* GifDisplayVCViewModel.swift in Sources */,
 				72A341D5259413B40074DCDB /* GiphyEndpoint.swift in Sources */,
 				729B05DD2588DD7500AF03B0 /* Gif.swift in Sources */,
+				72AC425525E77D55006B5BB0 /* MP4ContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

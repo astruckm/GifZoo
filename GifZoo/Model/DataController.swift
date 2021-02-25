@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+class DataController {
+    // TODO: interface with Core Data with this
+}
