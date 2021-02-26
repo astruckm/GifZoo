@@ -162,13 +162,9 @@ extension GifDisplayViewController: UICollectionViewDelegate {
             return nil
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
-            let saveAction = UIAction(title: NSLocalizedString("Save URL", comment: ""), image: UIImage(systemName: "square.and.arrow.down.on.square"), discoverabilityTitle: "Saves the URL for the gif so you can access it again.") { action in
-                print("Save Gif URL here")
-            }
-            let searchAction = UIAction(title: NSLocalizedString("Search Similar Gifs", comment: ""), image: UIImage(systemName: "magnifyingglass"), discoverabilityTitle: "Start a new search based on this Gif's title.") { action in
-                self.gifSearchBar.text = gif.title
-                self.performSearch(withText: gif.title)
-            }
+            
+            let saveAction = self.saveGifAction(gif)
+            let searchAction = self.searchGifsAction(gif)
             return UIMenu(title: "", children: [saveAction, searchAction])
         }
     }
@@ -253,7 +249,22 @@ extension GifDisplayViewController: UICollectionViewDelegate {
         viewModel.mp4?.play()
     }
     
+}
+
+extension GifDisplayViewController: ContextMenu {
+    func save(_ gif: Gif) {
+        print("Save Gif URL here")
+    }
     
+    func search(_ gif: Gif) {
+        self.gifSearchBar.text = gif.title
+        self.performSearch(withText: gif.title)
+    }
+    
+    func share(_ gif: Gif) {
+        
+    }
+
 }
 
 

@@ -24,6 +24,7 @@
 		729B05DD2588DD7500AF03B0 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B05DC2588DD7500AF03B0 /* Gif.swift */; };
 		72A341D5259413B40074DCDB /* GiphyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A341D4259413B40074DCDB /* GiphyEndpoint.swift */; };
 		72AC425525E77D55006B5BB0 /* MP4ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AC425425E77D55006B5BB0 /* MP4ContainerView.swift */; };
+		72AC425F25E7CDAD006B5BB0 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AC425E25E7CDAD006B5BB0 /* ContextMenu.swift */; };
 		72FF882525D91BDD005E3AD6 /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF882425D91BDD005E3AD6 /* NetworkingErrors.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		729B05DC2588DD7500AF03B0 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		72A341D4259413B40074DCDB /* GiphyEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyEndpoint.swift; sourceTree = "<group>"; };
 		72AC425425E77D55006B5BB0 /* MP4ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP4ContainerView.swift; sourceTree = "<group>"; };
+		72AC425E25E7CDAD006B5BB0 /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		72FF882425D91BDD005E3AD6 /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				729B05DC2588DD7500AF03B0 /* Gif.swift */,
+				72AC425E25E7CDAD006B5BB0 /* ContextMenu.swift */,
 				7243E35F25DF40C800970C42 /* DataController.swift */,
 			);
 			path = Model;
@@ -235,6 +238,7 @@
 				7287DD8025D7C82F00C81C5C /* GifRequests.swift in Sources */,
 				72FF882525D91BDD005E3AD6 /* NetworkingErrors.swift in Sources */,
 				7243928B2587505C00AA0D4C /* AppDelegate.swift in Sources */,
+				72AC425F25E7CDAD006B5BB0 /* ContextMenu.swift in Sources */,
 				72222AFB258C9029003A310E /* GIF-Swift.swift in Sources */,
 				7243E36025DF40C800970C42 /* DataController.swift in Sources */,
 				724392AA258753E100AA0D4C /* Constants.swift in Sources */,

@@ -23,7 +23,7 @@ struct Gif: Hashable {
             self.title = mutableTitle
         } else {
             self.title = title
-        }        
+        }
     }
 }
 

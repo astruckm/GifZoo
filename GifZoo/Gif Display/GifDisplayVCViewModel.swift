@@ -142,3 +142,4 @@ class GifDisplayVCViewModel: NSObject {
     
     
 }
+
