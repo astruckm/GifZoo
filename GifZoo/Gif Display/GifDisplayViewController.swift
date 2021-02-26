@@ -165,7 +165,8 @@ extension GifDisplayViewController: UICollectionViewDelegate {
             
             let saveAction = self.saveGifAction(gif)
             let searchAction = self.searchGifsAction(gif)
-            return UIMenu(title: "", children: [saveAction, searchAction])
+            let shareAction = self.shareGifsAction(gif)
+            return UIMenu(title: "", children: [saveAction, searchAction, shareAction])
         }
     }
     
@@ -262,7 +263,10 @@ extension GifDisplayViewController: ContextMenu {
     }
     
     func share(_ gif: Gif) {
-        
+        if let imageByMetadata = self.viewModel.gifsRetrievedImages[gif.id], let image = imageByMetadata[(gif.metadata?.fixedHeightSmall)!] {
+            let ac = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            present(ac, animated: true, completion: nil)
+        }
     }
 
 }

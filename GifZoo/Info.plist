@@ -62,5 +62,60 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>public.mpeg-4</string>
+			<key>UTTypeDescription</key>
+			<string>MP4</string>
+			<key>UTTypeIconFiles</key>
+			<array>
+				<string>photo.fill</string>
+			</array>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.movie</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<string>mp4</string>
+				<key>public.filename-extension</key>
+				<array>
+					<string>mp4</string>
+				</array>
+				<key>public.mime-type</key>
+				<string>video/mp4</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.compuserve.gif</string>
+			<key>UTTypeDescription</key>
+			<string>GIF</string>
+			<key>UTTypeIconFiles</key>
+			<array>
+				<string>photo.fill</string>
+			</array>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.image</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<string>GIF</string>
+				<key>public.filename-extension</key>
+				<array>
+					<string>gif</string>
+				</array>
+				<key>public.mime-type</key>
+				<string>image/gif</string>
+			</dict>
+		</dict>
+	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Would you like GifZoo to be able to write to Photos? </string>
 </dict>
 </plist>

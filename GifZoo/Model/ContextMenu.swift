@@ -27,7 +27,7 @@ extension ContextMenu {
         }
     }
     
-    func shareAction(_ gif: Gif) -> UIAction {
+    func shareGifsAction(_ gif: Gif) -> UIAction {
         return UIAction(title: NSLocalizedString("Share ", comment: ""), image: nil, discoverabilityTitle: "") { (action) in
             self.share(gif)
         }
