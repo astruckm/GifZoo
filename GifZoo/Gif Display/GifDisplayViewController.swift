@@ -131,7 +131,7 @@ extension GifDisplayViewController: UISearchBarDelegate {
                 self?.activityIndicator.stopAnimating()
             }
         }
-
+        
     }
     
 }
@@ -263,12 +263,20 @@ extension GifDisplayViewController: ContextMenu {
     }
     
     func share(_ gif: Gif) {
-        if let imageByMetadata = self.viewModel.gifsRetrievedImages[gif.id], let image = imageByMetadata[(gif.metadata?.fixedHeightSmall)!] {
-            let ac = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-            present(ac, animated: true, completion: nil)
+        DispatchQueue.global(qos: .background).async {
+            if let mp4URL = URL(string: (gif.metadata?.mp4?.mp4)!), let mp4Data =  NSData(contentsOf: mp4URL) {
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                let docDirectory = paths[0]
+                let filePath = "\(docDirectory)/tempFile.mp4"
+                DispatchQueue.main.async {
+                    mp4Data.write(toFile: filePath, atomically: true)
+                    let ac = UIActivityViewController(activityItems: [mp4URL], applicationActivities: nil)
+                    self.present(ac, animated: true, completion: nil)
+                }
+            }
         }
     }
-
+    
 }
 
 
