@@ -106,7 +106,7 @@
 				724392A9258753E100AA0D4C /* Constants.swift */,
 				72AC425325E77D1D006B5BB0 /* Custom Views */,
 				721EDC7425A42F9800DAD452 /* Model */,
-				725B541525A6F94C0034023B /* Networking Layer */,
+				725B541525A6F94C0034023B /* Networking */,
 				72D9FB2125A5A03E004443D3 /* Gif Display */,
 				724392932587505E00AA0D4C /* Assets.xcassets */,
 				724392952587505E00AA0D4C /* LaunchScreen.storyboard */,
@@ -116,14 +116,14 @@
 			path = GifZoo;
 			sourceTree = "<group>";
 		};
-		725B541525A6F94C0034023B /* Networking Layer */ = {
+		725B541525A6F94C0034023B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				72FF882425D91BDD005E3AD6 /* NetworkingErrors.swift */,
 				7287DD8825D801FD00C81C5C /* Giphy API */,
 				7287DD8225D7C84300C81C5C /* Requests */,
 			);
-			path = "Networking Layer";
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		7287DD8225D7C84300C81C5C /* Requests */ = {

@@ -162,7 +162,6 @@ extension GifDisplayViewController: UICollectionViewDelegate {
             return nil
         }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
-            
             let saveAction = self.saveGifAction(gif)
             let searchAction = self.searchGifsAction(gif)
             let shareAction = self.shareGifsAction(gif)
