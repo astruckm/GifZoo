@@ -16,7 +16,7 @@ class GifDisplayViewController: UIViewController {
     @IBOutlet weak var gifCollectionView: UICollectionView!
     @IBOutlet weak var numGifsControl: UISegmentedControl!
     
-    var mp4Containerview: UIView!
+    var mp4Containerview: MP4ContainerView!
     var activityIndicator = UIActivityIndicatorView(style: .large)
     var viewModel: GifDisplayVCViewModel!
     var dataSource: UICollectionViewDiffableDataSource<GifDisplayVCViewModel.Section, Gif>!
@@ -196,8 +196,8 @@ extension GifDisplayViewController: UICollectionViewDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideMP4Popup))
         grayView.addGestureRecognizer(tap)
         
-        mp4Containerview = UIView(frame: CGRect(x: cellFrame.minX, y: cellFrame.minY, width: 0, height: 0))
-        mp4Containerview.backgroundColor = .white
+        mp4Containerview = MP4ContainerView(frame: CGRect(x: cellFrame.minX, y: cellFrame.minY, width: 0, height: 0))
+        mp4Containerview.title.text = gif.title
         view.addSubview(mp4Containerview)
         view.bringSubviewToFront(grayView)
         view.bringSubviewToFront(mp4Containerview)
@@ -218,6 +218,7 @@ extension GifDisplayViewController: UICollectionViewDelegate {
                     }
                     self.view.layoutIfNeeded()
                     self.addMP4()
+                    self.mp4Containerview.bringSubviewsToFront()
                 }
             }
         }
