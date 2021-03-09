@@ -8,76 +8,108 @@
 import UIKit
 
 class MP4ContainerView: UIView {
+    private let minHeaderHeight: CGFloat = 24
+    private let minFooterHeight: CGFloat = 16
+    private var headerHeight: CGFloat = 0
+    private var footerHeight: CGFloat = 0
+    
+    // MARK: Define subviews
     let title: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Verdana", size: 18)
-        label.textColor = UIColor(red: 5/255, green: 142/255, blue: 217/255, alpha: 1.0)
+        label.font = UIFont(name: "Verdana", size: 14)
+        label.textAlignment = .center
+        label.textColor = UIColor(red: 5/255, green: 142/255, blue: 217/255, alpha: 1)
         
         label.backgroundColor = .clear
         
         return label
     }()
-    
-    let closeButton: UIButton = {
-        let button = UIButton()
         
-        return button
-    }()
-    
     let gifContainer: UIView = {
         let view = UIView()
-        
+        view.backgroundColor = .clear
         return view
     }()
     
     let saveButton: UIButton = {
         let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.arrow.down.on.square"), for: .normal)
         
         return button
     }()
     
     let shareButton: UIButton = {
         let button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         
         return button
     }()
     
+    // MARK: Init and setup
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupSubviews()
-        setup()
+        commonInit()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        setup()
+        setupSubviews()
     }
     
     private func setup() {
         backgroundColor = .white
-        
+//        headerHeight = bounds.height * 0.1
     }
-    
     
     private func setupSubviews() {
-        addSubviewConstraints()
+        addSubviews()
     }
     
-    private func addSubviewConstraints() {
+    private func addSubviews() {
         addSubview(title)
-        
-        NSLayoutConstraint.activate([
-            title.centerXAnchor.constraint(equalTo: centerXAnchor),
-            title.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.75),
-            title.topAnchor.constraint(equalTo: topAnchor),
-            title.heightAnchor.constraint(equalToConstant: 64)
-        ])
+        addSubview(gifContainer)
+        addSubview(saveButton)
+        addSubview(shareButton)
     }
     
-    internal func bringSubviewsToFront() {
+    // MARK: show subviews after selection
+    internal func displaySubviews() {
+        bringSubviewsToFront()
+        setSubviewFrames(withHeaderHeight: headerHeight, footerHeight: footerHeight)
+    }
+    
+    private func bringSubviewsToFront() {
         bringSubviewToFront(title)
+        bringSubviewToFront(gifContainer)
+        bringSubviewToFront(saveButton)
+        bringSubviewToFront(shareButton)
     }
     
-    // TODO: add any subviews: MP4View, "X" to close, save URL to favorites button
+    private func setSubviewFrames(withHeaderHeight headerHeight: CGFloat, footerHeight: CGFloat) {
+        title.frame = CGRect(x: bounds.width * 0.125, y: 0, width: bounds.width * 0.75, height: headerHeight)
+        
+        gifContainer.frame = CGRect(x: 0, y: headerHeight, width: bounds.width, height: bounds.height - headerHeight - footerHeight)
+        
+        saveButton.frame = CGRect(x: bounds.width * 1/3, y: bounds.height - footerHeight, width: footerHeight, height: footerHeight)
+        shareButton.frame = CGRect(x: bounds.width * 2/3, y: bounds.height - footerHeight, width: footerHeight, height: footerHeight)
+    }
+    
 }
+
+extension MP4ContainerView {
+    internal func viewHeight(fromMP4Height mp4Height: CGFloat) -> CGFloat {
+        let headerHeight = max(minHeaderHeight, mp4Height * 1/8)
+        self.headerHeight = headerHeight
+        let footerHeight = max(minFooterHeight, mp4Height * 1/8)
+        self.footerHeight = footerHeight
+        
+        return mp4Height + headerHeight + footerHeight
+    }
+}
+
+
