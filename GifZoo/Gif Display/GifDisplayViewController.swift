@@ -16,7 +16,7 @@ class GifDisplayViewController: UIViewController {
     @IBOutlet weak var gifCollectionView: UICollectionView!
     @IBOutlet weak var numGifsControl: UISegmentedControl!
     
-    var mp4Containerview: MP4ContainerView!
+    var mp4Containerview: UIView!
     var activityIndicator = UIActivityIndicatorView(style: .large)
     var viewModel: GifDisplayVCViewModel!
     var dataSource: UICollectionViewDiffableDataSource<GifDisplayVCViewModel.Section, Gif>!
@@ -198,30 +198,27 @@ extension GifDisplayViewController: UICollectionViewDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideMP4Popup))
         grayView.addGestureRecognizer(tap)
         
-        mp4Containerview = MP4ContainerView(frame: CGRect(x: cellFrame.minX, y: cellFrame.minY, width: 0, height: 0))
-        mp4Containerview.title.text = gif.title
+        mp4Containerview = UIView(frame: CGRect(x: cellFrame.minX, y: cellFrame.minY, width: 0, height: 0))
+        mp4Containerview.backgroundColor = .white
         view.addSubview(mp4Containerview)
         view.bringSubviewToFront(grayView)
         view.bringSubviewToFront(mp4Containerview)
         let maxWidth = view.bounds.size.width * 0.98
-        let mp4Width = maxWidth < width ? maxWidth : width
-        let mp4Height = height * (mp4Width / width)
-        let mp4ContainerHeight = mp4Containerview.viewHeight(fromMP4Height: mp4Height)
-                
+        let displayWidth = maxWidth < width ? maxWidth : width
+        let displayHeight = height * (displayWidth / width)
+        
         viewModel.getMP4(atURL: (URL(string: (gif.metadata?.mp4?.mp4)!))!, forID: gif.id) { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { /// FIXME: this delay is not 100% perfect to load mp4ContainerView
                 UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: [.calculationModeLinear, .layoutSubviews]) {
                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1) {
-                        self.mp4Containerview.frame = CGRect(x: self.view.bounds.midX - mp4Width/4, y: self.view.bounds.midY - mp4ContainerHeight/4, width: mp4Width/2, height: mp4ContainerHeight/2)
-                    }
+                        self.mp4Containerview.frame = CGRect(x: self.view.bounds.midX - displayWidth/4, y: self.view.bounds.midY - displayHeight/4, width: displayWidth/2, height: displayHeight/2)                    }
                     
                     UIView.addKeyframe(withRelativeStartTime: 0.66, relativeDuration: 0.25) {
                         self.mp4Containerview.transform = CGAffineTransform(scaleX: 2, y: 2)
                     }
                 } completion: { _ in
                     self.view.layoutIfNeeded()
-                    self.mp4Containerview.displaySubviews()
                     self.addMP4()
                 }
             }
@@ -231,9 +228,8 @@ extension GifDisplayViewController: UICollectionViewDelegate {
     
     private func addMP4() {
         let playerLayer = AVPlayerLayer(player: viewModel.mp4)
-        playerLayer.frame = mp4Containerview.gifContainer.bounds
-        self.mp4Containerview.gifContainer.layer.addSublayer(playerLayer)
-        self.mp4Containerview.layoutIfNeeded()
+        playerLayer.frame = mp4Containerview.bounds
+        self.mp4Containerview.layer.addSublayer(playerLayer)
         
         playMP4()
     }
