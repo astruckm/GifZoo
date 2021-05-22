@@ -12,7 +12,6 @@ class GifCollectionViewCell: UICollectionViewCell {
     
     func configure(withImage image: UIImage?) {
         imageView.image = image
-        print("populated imageview with image of duration: \(String(describing: image?.duration))")
         imageView.startAnimating()
     }
     
