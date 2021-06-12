@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class GifDisplayVCViewModel: NSObject {
     enum Section {
@@ -20,6 +21,8 @@ class GifDisplayVCViewModel: NSObject {
     var mp4: AVPlayer? = nil
     var cachedRequests: [AnyObject] = [] ///Just temporarily cache requests so ARC doesn't release GifRequests
     var cachedRequest: AnyObject?
+//    var persistantContainter: NSPersistentContainer!
+    var dataController: DataController!
     
     func getGifs(withText text: String, endpoint: GiphyEndpoint, limit: Int = 1, completion: @escaping () -> ()) {
         let request = GiphyRequest(endpoint: endpoint, searchTerm: text, limit: limit)

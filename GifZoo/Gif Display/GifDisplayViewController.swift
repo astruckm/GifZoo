@@ -73,7 +73,7 @@ class GifDisplayViewController: UIViewController {
         super.viewDidLoad()
         
         gifCollectionView.collectionViewLayout = createLayout()
-        viewModel = GifDisplayVCViewModel()
+//        viewModel = GifDisplayVCViewModel()
         gifCollectionView.delegate = self
         setupUI()
         configureDataSource()
@@ -255,6 +255,13 @@ extension GifDisplayViewController: UICollectionViewDelegate {
 extension GifDisplayViewController: ContextMenu {
     func save(_ gif: Gif) {
         print("Save Gif URL here")
+//        guard viewModel.persistantContainter.viewContext.hasChanges else { print("no changes"); return }
+        do {
+            try viewModel.dataController.persistentContainer.viewContext.save()
+            print("Changes saved, view context is now: \(viewModel.dataController.persistentContainer.viewContext.name), persistent store: \(viewModel.dataController.persistentContainer.persistentStoreCoordinator.persistentStore)")
+        } catch let e {
+            print("error saving changes: ", e)
+        }
     }
     
     func search(_ gif: Gif) {

@@ -70,7 +70,6 @@
 			children = (
 				729B05DC2588DD7500AF03B0 /* Gif.swift */,
 				72AC425E25E7CDAD006B5BB0 /* ContextMenu.swift */,
-				7243E35F25DF40C800970C42 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +167,7 @@
 		72D9FFBD265906BD00B23781 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				7243E35F25DF40C800970C42 /* DataController.swift */,
 				72D9FFB9265906A400B23781 /* SavedGifsModel.xcdatamodeld */,
 			);
 			path = Persistence;
