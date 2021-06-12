@@ -73,7 +73,7 @@ class GifDisplayViewController: UIViewController {
         super.viewDidLoad()
         
         gifCollectionView.collectionViewLayout = createLayout()
-//        viewModel = GifDisplayVCViewModel()
+        viewModel = GifDisplayVCViewModel()
         gifCollectionView.delegate = self
         setupUI()
         configureDataSource()

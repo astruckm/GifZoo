@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzU-is-Rvb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -12,13 +12,13 @@
         <!--Gif Display View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GifDisplayViewController" customModule="GifZoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gifDisplayVC" id="BYZ-38-t0r" customClass="GifDisplayViewController" customModule="GifZoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqD-II-fSS" userLabel="Gray View">
-                                <rect key="frame" x="0.0" y="-20" width="414" height="946"/>
+                                <rect key="frame" x="0.0" y="-3" width="414" height="863"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8jW-4t-RLh">
@@ -37,7 +37,7 @@
                                 <color key="selectedSegmentTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Idc-rj-sLJ" userLabel="Other Endpoints Container View">
-                                <rect key="frame" x="-13" y="176" width="440" height="40"/>
+                                <rect key="frame" x="-13" y="171" width="440" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsm-DX-wfO" userLabel="Trending!">
                                         <rect key="frame" x="72" y="0.0" width="113" height="40"/>
@@ -72,7 +72,7 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" placeholder="Search text" translatesAutoresizingMaskIntoConstraints="NO" id="OqH-ab-EEc">
-                                <rect key="frame" x="0.0" y="112" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="112" width="414" height="51"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -80,7 +80,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="18p-3w-ZL8">
-                                <rect key="frame" x="0.0" y="240" width="414" height="622"/>
+                                <rect key="frame" x="0.0" y="235" width="414" height="578"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="F6O-wo-8FA">
                                     <size key="itemSize" width="128" height="128"/>
@@ -115,7 +115,7 @@
                                 </cells>
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GiphyAttribution" translatesAutoresizingMaskIntoConstraints="NO" id="VDM-qc-cBJ">
-                                <rect key="frame" x="214" y="814" width="192" height="48"/>
+                                <rect key="frame" x="214" y="765" width="192" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="192" id="Hrh-md-YXh"/>
                                     <constraint firstAttribute="height" constant="48" id="llS-MK-S0b"/>
@@ -145,6 +145,7 @@
                             <constraint firstItem="OqH-ab-EEc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tUk-BC-aUw"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="livephoto" catalog="system" id="KFb-Mo-ZOF"/>
                     <connections>
                         <outlet property="gifCollectionView" destination="18p-3w-ZL8" id="j9l-B4-Od3"/>
                         <outlet property="gifSearchBar" destination="OqH-ab-EEc" id="MP6-Vf-wdK"/>
@@ -156,11 +157,82 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="93.75"/>
+        </scene>
+        <!--Saved Gifs View Controller-->
+        <scene sceneID="QMd-o1-UT7">
+            <objects>
+                <viewController id="TS9-NS-1mz" customClass="SavedGifsViewController" customModule="GifZoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="edS-Ud-6nb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EUT-dp-WaG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UD1-Ql-Kql" customClass="SavedGifTableViewCell" customModule="GifZoo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UD1-Ql-Kql" id="jb0-HU-xGb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gif Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-78-inn" userLabel="Gif Title">
+                                                    <rect key="frame" x="186" y="10.5" width="59" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JMI-6Z-oJe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JMI-6Z-oJe" firstAttribute="bottom" secondItem="EUT-dp-WaG" secondAttribute="bottom" id="6tV-dX-gnz"/>
+                            <constraint firstItem="EUT-dp-WaG" firstAttribute="top" secondItem="JMI-6Z-oJe" secondAttribute="top" id="9Nh-uP-FLn"/>
+                            <constraint firstItem="EUT-dp-WaG" firstAttribute="leading" secondItem="JMI-6Z-oJe" secondAttribute="leading" id="F7o-Y6-6Cp"/>
+                            <constraint firstItem="JMI-6Z-oJe" firstAttribute="trailing" secondItem="EUT-dp-WaG" secondAttribute="trailing" id="Wfl-7O-ua5"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="link" catalog="system" id="Ex6-S9-mou"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="knQ-0L-sm9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="821.65178571428567"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Jf6-TZ-wUC">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="FzU-is-Rvb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="bCT-8H-lVF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="SFP-8Q-GPg"/>
+                        <segue destination="TS9-NS-1mz" kind="relationship" relationship="viewControllers" id="Pff-0y-qRj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lxd-h6-K24" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
         </scene>
     </scenes>
     <resources>
         <image name="GiphyAttribution" width="641" height="85"/>
+        <image name="link" catalog="system" width="128" height="122"/>
+        <image name="livephoto" catalog="system" width="128" height="122"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

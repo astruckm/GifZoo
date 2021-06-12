@@ -37,7 +37,7 @@ class DataController {
         }
     }
     
-    func loadGifRef() -> [NSManagedObject] {
+    func loadGifRef() -> [NSManagedObject]? {
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GifRef")
         do {
@@ -45,6 +45,7 @@ class DataController {
             return gifRefs
         } catch let error as NSError {
             print("Enable to fetch gif refs: \(error.localizedDescription)\n\(error.userInfo)")
+            return nil
         }
     }
 }
