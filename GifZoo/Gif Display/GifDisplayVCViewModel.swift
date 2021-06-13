@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class GifDisplayVCViewModel: NSObject {
+class GifDisplayVCViewModel {
     enum Section {
         case main
     }
@@ -23,6 +23,10 @@ class GifDisplayVCViewModel: NSObject {
     var cachedRequest: AnyObject?
 //    var persistantContainter: NSPersistentContainer!
     var dataController: DataController!
+    
+    init() {
+        dataController = DataController { }
+    }
     
     func getGifs(withText text: String, endpoint: GiphyEndpoint, limit: Int = 1, completion: @escaping () -> ()) {
         let request = GiphyRequest(endpoint: endpoint, searchTerm: text, limit: limit)

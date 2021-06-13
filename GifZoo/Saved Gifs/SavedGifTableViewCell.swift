@@ -9,4 +9,10 @@ import UIKit
 
 class SavedGifTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var gifTitle: UILabel!
+    
+    func configure(title: String?) {
+        gifTitle.text = title
+        gifTitle.textColor = .systemPink
+    }
 }

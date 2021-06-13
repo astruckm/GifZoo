@@ -32,6 +32,7 @@ class DataController {
         do {
             try context.save()
             gifRefs.append(gifRef)
+            print("there are now \(gifRefs.count) gif refs")
         } catch let error as NSError {
             print("Enable to save to managed object context: \(error.localizedDescription)\n\(error.userInfo)")
         }

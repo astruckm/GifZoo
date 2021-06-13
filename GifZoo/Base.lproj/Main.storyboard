@@ -171,22 +171,29 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UD1-Ql-Kql" customClass="SavedGifTableViewCell" customModule="GifZoo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="savedGifCell" id="UD1-Ql-Kql" customClass="SavedGifTableViewCell" customModule="GifZoo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UD1-Ql-Kql" id="jb0-HU-xGb">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gif Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-78-inn" userLabel="Gif Title">
-                                                    <rect key="frame" x="186" y="10.5" width="59" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gif Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCv-78-inn" userLabel="Gif Title">
+                                                    <rect key="frame" x="20" y="11.5" width="59" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pCv-78-inn" firstAttribute="centerY" secondItem="jb0-HU-xGb" secondAttribute="centerY" id="F21-NF-IPw"/>
+                                                <constraint firstItem="pCv-78-inn" firstAttribute="leading" secondItem="jb0-HU-xGb" secondAttribute="leading" constant="20" symbolic="YES" id="K2T-zP-n7h"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pCv-78-inn" secondAttribute="trailing" constant="20" symbolic="YES" id="rAQ-6P-pTo"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gifTitle" destination="pCv-78-inn" id="2Pr-S5-ecf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -201,6 +208,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="link" catalog="system" id="Ex6-S9-mou"/>
+                    <connections>
+                        <outlet property="savedGifsTableView" destination="EUT-dp-WaG" id="dq7-f1-oXJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knQ-0L-sm9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
