@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 class SavedGifsViewController: UIViewController {
     @IBOutlet weak var savedGifsTableView: UITableView!
@@ -27,7 +28,11 @@ class SavedGifsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateGifsData()
+        if let gifRefs = viewModel.dataController.loadGifRef() as? [GifRef] {
+            viewModel.gifRefs = gifRefs
+            updateGifsData()
+        }
+        
     }
     
     private func setupUI() {
@@ -55,5 +60,14 @@ extension SavedGifsViewController {
 }
 
 extension SavedGifsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < viewModel.gifRefs.count else { return }
+        let gifRef = viewModel.gifRefs[indexPath.row]
+        guard let url = gifRef.url else { return }
+        UIApplication.shared.open(url)
+    }
+}
+
+extension SavedGifsViewController: WKNavigationDelegate {
     
 }

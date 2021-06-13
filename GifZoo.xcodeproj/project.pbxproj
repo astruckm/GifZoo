@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		72222AFB258C9029003A310E /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72222AFA258C9029003A310E /* GIF-Swift.swift */; };
 		723DB68326759448004498A4 /* SavedGifsVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB68226759448004498A4 /* SavedGifsVCViewModel.swift */; };
+		723DB6852675BAE8004498A4 /* GifTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DB6842675BAE8004498A4 /* GifTabBarController.swift */; };
 		7243928B2587505C00AA0D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243928A2587505C00AA0D4C /* AppDelegate.swift */; };
 		7243928D2587505C00AA0D4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243928C2587505C00AA0D4C /* SceneDelegate.swift */; };
 		7243928F2587505C00AA0D4C /* GifDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7243928E2587505C00AA0D4C /* GifDisplayViewController.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		72222AFA258C9029003A310E /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		723DB68226759448004498A4 /* SavedGifsVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGifsVCViewModel.swift; sourceTree = "<group>"; };
+		723DB6842675BAE8004498A4 /* GifTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifTabBarController.swift; sourceTree = "<group>"; };
 		724392872587505C00AA0D4C /* GifZoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifZoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7243928A2587505C00AA0D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7243928C2587505C00AA0D4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				7243928A2587505C00AA0D4C /* AppDelegate.swift */,
 				7243928C2587505C00AA0D4C /* SceneDelegate.swift */,
+				723DB6842675BAE8004498A4 /* GifTabBarController.swift */,
 				724392902587505C00AA0D4C /* Main.storyboard */,
 				724392A9258753E100AA0D4C /* Constants.swift */,
 				72AC425325E77D1D006B5BB0 /* Custom Views */,
@@ -263,6 +266,7 @@
 				7287DD7B25D7949B00C81C5C /* NetworkRequest.swift in Sources */,
 				7243928F2587505C00AA0D4C /* GifDisplayViewController.swift in Sources */,
 				724392A4258751FA00AA0D4C /* GifCollectionViewCell.swift in Sources */,
+				723DB6852675BAE8004498A4 /* GifTabBarController.swift in Sources */,
 				7287DD8025D7C82F00C81C5C /* GifRequests.swift in Sources */,
 				72FF882525D91BDD005E3AD6 /* NetworkingErrors.swift in Sources */,
 				7243928B2587505C00AA0D4C /* AppDelegate.swift in Sources */,

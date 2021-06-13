@@ -117,5 +117,14 @@
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Would you like GifZoo to be able to write to Photos? </string>
+	<key>App Transport Security Settings</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsForMedia</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
