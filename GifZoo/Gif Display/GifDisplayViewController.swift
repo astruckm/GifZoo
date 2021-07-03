@@ -254,10 +254,8 @@ extension GifDisplayViewController: UICollectionViewDelegate {
 
 extension GifDisplayViewController: ContextMenu {
     func save(_ gif: Gif) {
-        print("Save Gif URL here")
-        //        guard viewModel.persistantContainter.viewContext.hasChanges else { print("no changes"); return }
-        viewModel.dataController.saveGifRef(withTitle: gif.title, url: URL(string: "https://www.google.com")!, dateAdded: Date())
-        print("Changes saved, view context is now: \(viewModel.dataController.persistentContainer.viewContext), persistent store: \(viewModel.dataController.persistentContainer.persistentStoreCoordinator.persistentStore)")
+        guard let urlStrFixedWidth = gif.metadata?.fixedWidthSmall?.url else { return }
+        viewModel.dataController.saveGifRef(withTitle: gif.title, url: URL(string: urlStrFixedWidth)!, dateAdded: Date())
     }
     
     func search(_ gif: Gif) {

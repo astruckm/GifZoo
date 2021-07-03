@@ -49,4 +49,6 @@ class DataController {
             return nil
         }
     }
+    
+    // TODO: deleteGifRef()
 }

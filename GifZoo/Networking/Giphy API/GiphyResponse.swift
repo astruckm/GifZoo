@@ -10,11 +10,11 @@ import Foundation
 protocol GiphyResponse { }
 
 struct GifsResponse: Decodable, GiphyResponse {
-    let data: [ResponseData]?
+    let data: [ResponseData]
 }
 
 struct RandomGifResponse: Decodable, GiphyResponse {
-    let data: ResponseData?
+    let data: ResponseData
 }
 
 

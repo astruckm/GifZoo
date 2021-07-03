@@ -21,7 +21,6 @@ class GifDisplayVCViewModel {
     var mp4: AVPlayer? = nil
     var cachedRequests: [AnyObject] = [] ///Just temporarily cache requests so ARC doesn't release GifRequests
     var cachedRequest: AnyObject?
-//    var persistantContainter: NSPersistentContainer!
     var dataController: DataController!
     
     init() {
@@ -45,7 +44,7 @@ class GifDisplayVCViewModel {
                     print("Could not cast GiphyResponse to RandomGifResponse")
                     return
                 }
-                gifsResponse.data?.forEach({ (datum) in
+                gifsResponse.data.forEach({ (datum) in
                     self.dispatchGroup.enter()
                     if let imageURLString = datum.images?.fixedWidthSmall?.url, let imageURL = URL(string: imageURLString) {
                         let gif = Gif(metadata: GifSize(fixedHeightSmall: datum.images?.fixedHeightSmall, fixedWidthSmall: datum.images?.fixedWidthSmall, mp4: datum.images?.mp4), title: (datum.title)!)
@@ -84,8 +83,8 @@ class GifDisplayVCViewModel {
                     print("Could not cast GiphyResponse to RandomGifResponse")
                     return
                 }
-                if let imageURL = URL(string: (randomGifResponse.data?.images?.mp4?.mp4) ?? "") {
-                    let gif = Gif(metadata: GifSize(fixedHeightSmall: randomGifResponse.data?.images?.fixedHeightSmall, fixedWidthSmall: randomGifResponse.data?.images?.fixedWidthSmall, mp4: randomGifResponse.data?.images?.mp4), title: (randomGifResponse.data?.title)!)
+                if let imageURL = URL(string: (randomGifResponse.data.images?.mp4?.mp4) ?? "") {
+                    let gif = Gif(metadata: GifSize(fixedHeightSmall: randomGifResponse.data.images?.fixedHeightSmall, fixedWidthSmall: randomGifResponse.data.images?.fixedWidthSmall, mp4: randomGifResponse.data.images?.mp4), title: (randomGifResponse.data.title)!)
                     self.gifs.append(gif)
                     self.cachedRequest = nil
                     self.getMP4(atURL: imageURL, forID: gif.id) {
