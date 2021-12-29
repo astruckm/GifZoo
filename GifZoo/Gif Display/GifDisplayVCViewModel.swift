@@ -19,7 +19,7 @@ class GifDisplayVCViewModel {
     var gifsRetrievedImages: [UUID: [GifMetadata: UIImage]] = [:]
     var mp4Item: AVPlayerItem? = nil
     var mp4: AVPlayer? = nil
-    var cachedRequests: [AnyObject] = [] ///Just temporarily cache requests so ARC doesn't release GifRequests
+    var cachedRequests: [AnyObject] = [] /// Just temporarily cache requests so ARC doesn't release GifRequests
     var cachedRequest: AnyObject?
     var dataController: DataController!
     
@@ -27,14 +27,18 @@ class GifDisplayVCViewModel {
         dataController = DataController { }
     }
     
+    func resetGifsData() {
+        mp4Item = nil
+        mp4 = nil
+        gifs = []
+        gifsRetrievedImages = [:]
+    }
+    
     func getGifs(withText text: String, endpoint: GiphyEndpoint, limit: Int = 1, completion: @escaping () -> ()) {
         let request = GiphyRequest(endpoint: endpoint, searchTerm: text, limit: limit)
         cachedRequest = request
         request.load { [weak self] (result) in
-            guard let self = self else {
-                print("Unable to capture self while fetching random gif")
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case .failure(let error):
@@ -69,10 +73,7 @@ class GifDisplayVCViewModel {
         let request = GiphyRequest(endpoint: .random, searchTerm: text)
         cachedRequest = request
         request.load { [weak self] (result) in
-            guard let self = self else {
-                print("Unable to capture self while fetching random gif")
-                return
-            }
+            guard let self = self else { return }
             
             switch result {
             case .failure(let error):
@@ -102,10 +103,7 @@ class GifDisplayVCViewModel {
         let gifRequest = GifRequest(url: url)
         cachedRequests.append(gifRequest)
         gifRequest.load { [weak self] (result) in
-            guard let self = self else {
-                print("Unable to capture self while fetching image")
-                return
-            }
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 print("Error fetching imagefile: ", error.localizedDescription)
@@ -128,10 +126,7 @@ class GifDisplayVCViewModel {
         let mp4Request = MP4Request(url: url)
         cachedRequest = mp4Request
         mp4Request.load { [weak self] (result) in
-            guard let self = self else {
-                print("Unable to capture self while fetching image")
-                return
-            }
+            guard let self = self else { return }
             switch result {
             case .failure(let error):
                 print("Error fetching mp4: ", error.localizedDescription)

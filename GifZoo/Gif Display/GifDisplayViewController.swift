@@ -23,12 +23,8 @@ class GifDisplayViewController: UIViewController {
     var isPresentingMP4 = false
     
     @IBAction func trendingButtonTapped(_ sender: UIButton) {
-        // TODO: make these lines of code more DRY
-        viewModel.mp4Item = nil
-        viewModel.mp4 = nil
+        viewModel.resetGifsData()
         gifCollectionView.layer.sublayers?.first(where: { $0 is AVPlayerLayer })?.removeFromSuperlayer()
-        viewModel.gifs = []
-        viewModel.gifsRetrievedImages = [:]
         let numGifs: Int = Int(numGifsControl.titleForSegment(at: numGifsControl.selectedSegmentIndex) ?? "1") ?? 1
         viewModel.getGifs(withText: "", endpoint: .trending, limit: numGifs) { [weak self] in
             DispatchQueue.main.async {
@@ -41,8 +37,7 @@ class GifDisplayViewController: UIViewController {
     
     @IBAction func randomGifTapped(_ sender: UIButton) {
         guard let text = gifSearchBar.text else { return }
-        viewModel.mp4Item = nil
-        viewModel.mp4 = nil
+        viewModel.resetGifsData()
         gifCollectionView.layer.sublayers?.first(where: { $0 is AVPlayerLayer })?.removeFromSuperlayer()
         
         viewModel.getRandomGif(atText: text) { [weak self] in
@@ -120,11 +115,8 @@ extension GifDisplayViewController: UISearchBarDelegate {
     private func performSearch(withText text: String) {
         activityIndicator.startAnimating()
         
-        viewModel.mp4Item = nil
-        viewModel.mp4 = nil
+        viewModel.resetGifsData()
         gifCollectionView.layer.sublayers?.first(where: { $0 is AVPlayerLayer })?.removeFromSuperlayer()
-        viewModel.gifs = []
-        viewModel.gifsRetrievedImages = [:]
         let numGifs: Int = Int(numGifsControl.titleForSegment(at: numGifsControl.selectedSegmentIndex) ?? "1") ?? 1
         viewModel.getGifs(withText: text, endpoint: .search, limit: numGifs) { [weak self] in
             DispatchQueue.main.async {
@@ -210,6 +202,7 @@ extension GifDisplayViewController: UICollectionViewDelegate {
         viewModel.getMP4(atURL: (URL(string: (gif.metadata?.mp4?.mp4)!))!, forID: gif.id) { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { /// FIXME: this delay is not 100% perfect to load mp4ContainerView
+                // TODO: make this function an extension on UIView??
                 UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: [.calculationModeLinear, .layoutSubviews]) {
                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1) {
                         self.mp4Containerview.frame = CGRect(x: self.view.bounds.midX - displayWidth/4, y: self.view.bounds.midY - displayHeight/4, width: displayWidth/2, height: displayHeight/2)                    }
